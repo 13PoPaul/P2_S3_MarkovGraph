@@ -1,5 +1,6 @@
 #ifndef __HASSE_H__
 #define __HASSE_H__
+#include "types.h"
 
 void removeTransitiveLinks(t_link_array *p_link_array);
 
