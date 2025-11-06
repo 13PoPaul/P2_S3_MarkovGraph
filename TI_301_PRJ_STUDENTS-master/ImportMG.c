@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 
-t_cell* create_cell( int ver, int prob){
+t_cell* create_cell( int ver, double prob){
   t_cell* cell;
   cell = malloc(sizeof(t_cell));
   cell->vertex = ver;
