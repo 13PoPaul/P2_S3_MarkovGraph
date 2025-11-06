@@ -1,4 +1,58 @@
 #include "ImportMG.h"
+#include "functions.h"
+#include <stdlib.h>
+
+
+typedef struct s_cell{
+  int vertex;
+  int proba;
+  struct s_cell* next;
+  }t_cell;
+
+
+typedef struct s_list {
+  t_cell* head;
+}t_list;
+
+t_cell* create_cell( int ver, int prob){
+  t_cell* cell;
+  cell = malloc(sizeof(t_cell));
+  cell->vertex = ver;
+  cell->proba = prob;
+  cell->next = NULL;
+
+  return cell;
+  }
+
+
+t_list* create_empty_list() {
+
+  t_list* list = malloc(sizeof(t_list));
+  list->head = NULL;
+
+  return list;
+}
+
+
+t_list* add_cell(t_cell* cell,t_list* list) {
+
+  if (list->head == NULL) {
+    list->head = cell;
+    cell->next = NULL;
+  }
+  else {
+    t_cell* current;
+    current = list->head;
+    while (current->next != NULL) {
+      current = current->next;
+    }
+    current->next = cell;
+    cell->next = NULL;
+  }
+
+  return list;
+}
+
 
 adjacency_list * createEmptyAdjacency_list(int N_Verticies)
 {
