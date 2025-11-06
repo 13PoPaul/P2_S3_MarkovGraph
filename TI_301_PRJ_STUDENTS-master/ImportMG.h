@@ -5,7 +5,7 @@
 
 typedef struct s_cell{
   int vertex;
-  int proba;
+  double proba;
   struct s_cell* next;
   }t_cell;
 
@@ -15,7 +15,7 @@ typedef struct s_list {
 }t_list;
 
 
-t_cell* create_cell( int ver, int prob);
+t_cell* create_cell( int ver, double prob);
 
 t_list* create_empty_list();
 
