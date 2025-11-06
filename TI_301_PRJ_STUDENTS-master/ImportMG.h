@@ -24,7 +24,7 @@ t_list* add_cell(t_cell* cell,t_list* list);
 typedef struct adjacency_list
 {
     int N_Verticies;
-    Vertex ** Verticies;
+    t_list ** Verticies;
 } adjacency_list;
 
 adjacency_list * createEmptyAdjacency_list(int N_Verticies);
