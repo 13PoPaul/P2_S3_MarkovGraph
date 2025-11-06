@@ -3,17 +3,6 @@
 #include <stdlib.h>
 
 
-typedef struct s_cell{
-  int vertex;
-  int proba;
-  struct s_cell* next;
-  }t_cell;
-
-
-typedef struct s_list {
-  t_cell* head;
-}t_list;
-
 t_cell* create_cell( int ver, int prob){
   t_cell* cell;
   cell = malloc(sizeof(t_cell));
