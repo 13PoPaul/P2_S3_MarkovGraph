@@ -94,7 +94,7 @@ adjacency_list readGraph(const char * filename)
 void display_adjency_list(adjency_list *adj) {
     for (int i = 0; i < adj->N_Verticies; i++) {
         printf("Vertex %d: ", i + 1);
-        display_list(adj->verticies[i]);
+        display_list(adj->Verticies[i]);
     }
 }
 
