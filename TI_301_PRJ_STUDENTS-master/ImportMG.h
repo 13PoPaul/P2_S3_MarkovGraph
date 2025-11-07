@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 typedef struct s_cell{
-  int vertex;
-  double proba;
-  struct s_cell* next;
+    int vertex;
+    double proba;
+    struct s_cell* next;
 }t_cell;
 
 
 typedef struct s_list {
-  t_cell * head;
+    t_cell * head;
 }t_list;
 
 
@@ -29,5 +29,7 @@ adjacency_list * createEmptyAdjacency_list(int N_Verticies);
 
 adjacency_list * readGraph(const char * filename);
 
-void display_adjency_list(adjency_list *adj);
+void display_adjency_list(adjacency_list * adj);
+
+void display_list(t_list * list);
 

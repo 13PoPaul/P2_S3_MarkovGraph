@@ -93,10 +93,26 @@ adjacency_list * readGraph(const char * filename)
     return M_Graph;
 }
 
+void display_list(t_list * list)
+{
+  if (list -> head == NULL) {
+        printf("La liste est vide.\n");
+        return;
+    }
 
-void display_adjency_list(adjency_list *adj) {
+    printf("Contenu de la liste : ");
+    t_cell * current = list -> head;
+    while (current != NULL) {
+        printf("(%d, %.2f)", current -> vertex , current -> proba);
+        current = current -> next;
+        if (current != NULL) printf(" @->");
+    }
+    printf("\n");
+}
+
+void display_adjency_list(adjacency_list *adj) {
     for (int i = 0; i < adj->N_Verticies; i++) {
-        printf("Vertex %d: ", i + 1);
+        printf("List for vertex %d: [head @] -> ", i + 1);
         display_list(adj->Verticies[i]);
     }
 }
