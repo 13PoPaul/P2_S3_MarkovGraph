@@ -29,4 +29,5 @@ adjacency_list * createEmptyAdjacency_list(int N_Verticies);
 
 adjacency_list * readGraph(const char * filename);
 
+void display_adjency_list(adjency_list *adj);
 
