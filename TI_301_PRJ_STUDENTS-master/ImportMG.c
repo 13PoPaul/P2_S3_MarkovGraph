@@ -1,9 +1,8 @@
 #include "ImportMG.h"
-#include "functions.h"
 #include <stdlib.h>
 
 
-t_cell* create_cell( int ver, int prob){
+t_cell* create_cell( int ver, double prob){
   t_cell* cell;
   cell = malloc(sizeof(t_cell));
   cell->vertex = ver;
@@ -11,20 +10,21 @@ t_cell* create_cell( int ver, int prob){
   cell->next = NULL;
 
   return cell;
-  }
+}
 
 
 t_list* create_empty_list() {
 
-  t_list* list = malloc(sizeof(t_list));
-  list->head = NULL;
-
+  t_list * list = malloc(sizeof(t_list));
+  list -> head = NULL;
   return list;
 }
 
 
-t_list* add_cell(t_cell* cell,t_list* list) {
+t_list* add_cell(t_list* list , int ver, double prob)
+{
 
+  t_cell * cell = create_cell(ver , prob);
   if (list->head == NULL) {
     list->head = cell;
     cell->next = NULL;
@@ -45,20 +45,22 @@ t_list* add_cell(t_cell* cell,t_list* list) {
 
 adjacency_list * createEmptyAdjacency_list(int N_Verticies)
 {
-  adjacency_list * ad_list;
+
+  adjacency_list * ad_list = malloc(sizeof(adjacency_list));
   ad_list -> N_Verticies = N_Verticies;
+  ad_list->Verticies = malloc(N_Verticies * sizeof(t_list*));
   for (int i = 0; i < N_Verticies ; i++)
   {
-        ad_list -> Verticies[i] == NULL;
+    ad_list -> Verticies[i] = NULL;
   }
   return ad_list;
 }
 
-adjacency_list readGraph(const char * filename)
+adjacency_list * readGraph(const char * filename)
 {
     FILE *file = fopen(filename, "rt"); // read-only, text
     int nbvert, start, end;
-    float proba;
+    double proba;
     //declare the variable for the adjacency list
     adjacency_list * M_Graph;
     if (file == NULL)
@@ -74,17 +76,18 @@ adjacency_list readGraph(const char * filename)
     }
     //use create adjancy list function
     // Initialise an empty adjacency list using the number of vertices
-    M_Graph =  createEmptyAdjacency_list(nbvert);
+    M_Graph = createEmptyAdjacency_list(nbvert);
     while (fscanf(file, "%d %d %f", &start, &end, &proba) == 3)
     {
         // we obtain, for each line of the file, the values
         // start, end and proba
         //Add the edge that runs from 'start' to ‘end’ with the
         //probability 'proba' to the adjacency list
-        for (int i = 0; i <  nbvert ; i++)
+        if (M_Graph -> Verticies[start] == NULL)
         {
-
+          M_Graph -> Verticies[start] = create_empty_list();
         }
+        M_Graph -> Verticies[start] = add_cell( M_Graph -> Verticies[start] , end , proba);
     }
     fclose(file);
     return M_Graph;

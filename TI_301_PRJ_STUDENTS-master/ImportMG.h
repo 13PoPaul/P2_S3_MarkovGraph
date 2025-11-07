@@ -1,34 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "functions.c"
-
 
 typedef struct s_cell{
   int vertex;
-  int proba;
+  double proba;
   struct s_cell* next;
-  }t_cell;
+}t_cell;
 
 
 typedef struct s_list {
-  t_cell* head;
+  t_cell * head;
 }t_list;
 
 
-t_cell* create_cell( int ver, int prob);
+t_cell* create_cell( int ver, double prob);
 
 t_list* create_empty_list();
 
-t_list* add_cell(t_cell* cell,t_list* list);
+t_list* add_cell(t_list* list , int ver, double prob);
 
 typedef struct adjacency_list
 {
     int N_Verticies;
-    Vertex ** Verticies;
+    t_list ** Verticies;
 } adjacency_list;
 
 adjacency_list * createEmptyAdjacency_list(int N_Verticies);
 
-adjacency_list readGraph(const char * filename);
+adjacency_list * readGraph(const char * filename);
 
 
