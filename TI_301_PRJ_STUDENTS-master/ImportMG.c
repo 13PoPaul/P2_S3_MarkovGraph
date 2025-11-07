@@ -77,17 +77,19 @@ adjacency_list * readGraph(const char * filename)
     //use create adjancy list function
     // Initialise an empty adjacency list using the number of vertices
     M_Graph = createEmptyAdjacency_list(nbvert);
-    while (fscanf(file, "%d %d %f", &start, &end, &proba) == 3)
+    while (fscanf(file, "%d %d %lf", &start, &end, &proba) == 3)
     {
         // we obtain, for each line of the file, the values
         // start, end and proba
         //Add the edge that runs from 'start' to ‘end’ with the
         //probability 'proba' to the adjacency list
-        if (M_Graph -> Verticies[start] == NULL)
+        int s = start - 1;
+        if (M_Graph -> Verticies[s] == NULL)
         {
-          M_Graph -> Verticies[start] = create_empty_list();
+          M_Graph -> Verticies[s] = create_empty_list();
         }
-        M_Graph -> Verticies[start] = add_cell( M_Graph -> Verticies[start] , end , proba);
+        M_Graph -> Verticies[s] = add_cell( M_Graph -> Verticies[s] , end , proba);
+
     }
     fclose(file);
     return M_Graph;
@@ -95,29 +97,21 @@ adjacency_list * readGraph(const char * filename)
 
 void display_list(t_list * list)
 {
-  if (list -> head == NULL) {
-        printf("La liste est vide.\n");
-        return;
-    }
-
-    printf("Contenu de la liste : ");
     t_cell * current = list -> head;
-    while (current != NULL) {
-        printf("(%d, %.2f)", current -> vertex , current -> proba);
+    while (current != NULL)
+    {
+        printf("(%d, %lf)", current -> vertex , current -> proba);
         current = current -> next;
-        if (current != NULL) printf(" @->");
+        if (current != NULL) printf(" @-> ");
     }
     printf("\n");
 }
 
-void display_adjency_list(adjacency_list *adj) {
-    for (int i = 0; i < adj->N_Verticies; i++) {
+void display_adjency_list(adjacency_list *adj)
+{
+    for (int i = 0; i < adj -> N_Verticies; i++)
+    {
         printf("List for vertex %d: [head @] -> ", i + 1);
-        display_list(adj->Verticies[i]);
+        display_list( adj -> Verticies[i]);
     }
 }
-
-
-
-
-
