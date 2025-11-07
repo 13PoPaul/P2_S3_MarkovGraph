@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.24)
-project(2526_TI301_PJT C)
+cmake_minimum_required(VERSION 3.30)
+project(MarkovGraphTest C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(TI_301_PJT
-        main.c ImportMG.c)
+add_executable(Run
+        main.c ImportMG.c data/exemple1.txt graph_mermaid.txt mermaid.c data/exemple_valid_step3.txt)
 
