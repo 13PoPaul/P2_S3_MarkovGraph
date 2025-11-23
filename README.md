@@ -2,6 +2,14 @@
 Study of Markov Graphs
 The Git Hub Link : https://github.com/13PoPaul/P2_S3_MarkovGraph.git
 
+Procedure for Installation :
+Don't get the code from version control dosn't work !
+Instead you want to use the file provied en the Zip or download it from the git Hub.
+Then you should be able to run the programme but it would failed.
+To correct the error you must do the following :
+at the top right go to edit configurations. Then in working directory you want to click on the folder and select MarkovGraphTest
+Here you go !
+
 
 This is the conversation we had with Gemini 3.1 to do Part 3 :
 
