@@ -1,0 +1,4 @@
+graph TD;
+    C1("{5,4,3,2,1}");
+
+    % Aucune transition
